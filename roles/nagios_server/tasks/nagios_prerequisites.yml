@@ -1,0 +1,34 @@
+---
+
+- name: install apache
+  yum: pkg={{ item }} state=present
+  with_items:
+   - php
+   - httpd
+   - libsemanage-python
+   - libselinux-python
+
+- name: Install Nagios prerequisites for CentOS
+  yum: pkg={{ item }} state=present
+  with_items:
+   - gcc
+   - glibc
+   - glibc-common
+   - gd
+   - gd-devel
+   - make
+   - perl
+   - perl-devel
+   - wget
+   - unzip
+
+- name: Install plugin prerequisites for CentOS
+  yum: pkg={{ item }} state=present
+  with_items:
+   - openssl-devel
+   - fping
+   - openldap-devel
+   - postgresql-devel
+   - radiusclient-ng-devel
+   - samba-client
+   - libsmbclient

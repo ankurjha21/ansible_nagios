@@ -1,0 +1,24 @@
+---
+# defaults file for nagios
+
+# Directory that will be used as the location for the downloads§
+download_dir: "{{ ansible_env.HOME }}/nagios"
+
+
+# Define the download url for the Nagios Core source files and the version you want to use.
+nagiosurl: https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.1.1.tar.gz
+
+nagiossrc: nagios-4.1.1
+pluginsurl: http://www.nagios-plugins.org/download/nagios-plugins-2.1.1.tar.gz
+pluginssrc: nagios-plugins-2.1.1
+
+monitoring_user: nagios
+monitoring_command_group: nagcmd
+
+# This is a list of users allowed to login to the nagios web frontend
+nagios_users:
+  - user: nagiosadmin
+    pass: Atmecs@123
+
+# This option will be used if you want to uninstall debian packages for nagios and check-mk-livestatus
+ansible_role_nagios_remove_packages: false

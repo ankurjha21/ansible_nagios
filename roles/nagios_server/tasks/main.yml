@@ -1,0 +1,20 @@
+---
+# tasks file for nagios
+
+- name: Ensure download directory is present
+  file: path={{ download_dir }} state=directory
+
+- name: Create nagcmd group
+  group: name={{ monitoring_command_group }} state=present
+
+- name: Create nagios user
+  user: name={{ monitoring_user }} state=present groups={{ monitoring_command_group }}
+
+- include: nagios_prerequisites.yml
+
+- include: nagios_install.yml
+
+- include: nagios_plugins.yml
+
+- name: Use htpasswd to create an admin user, called "nagiosadmin", that can access the Nagios web interface
+  shell: htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin 
