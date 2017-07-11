@@ -26,9 +26,9 @@
   yum: pkg={{ item }} state=present
   with_items:
    - openssl-devel
-   - fping
    - openldap-devel
    - postgresql-devel
    - radiusclient-ng-devel
    - samba-client
    - libsmbclient
+   - fping
